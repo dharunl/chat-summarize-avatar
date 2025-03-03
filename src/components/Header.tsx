@@ -66,7 +66,7 @@ const Header = () => {
               <h3 className="text-sm font-medium mb-3">API Settings</h3>
               <div className="mb-4">
                 <label className="block text-xs text-muted-foreground mb-1">
-                  Gemini API Key
+                  Gemini API Key (Optional)
                 </label>
                 <input
                   type="password"
@@ -76,7 +76,7 @@ const Header = () => {
                   placeholder="Enter your Gemini API key"
                 />
                 <p className="text-xs text-muted-foreground mt-2">
-                  Your API key is stored only in your browser's local storage.
+                  A default API key is already configured. You only need to enter a custom key if you want to use your own.
                 </p>
               </div>
               <div className="flex justify-end gap-2">

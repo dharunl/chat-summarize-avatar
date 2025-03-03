@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import TextInput from './shared/TextInput';
 import Button from './shared/Button';
@@ -22,11 +21,6 @@ const Summarizer = ({ onSummaryGenerated }: SummarizerProps) => {
       return;
     }
     
-    if (!geminiApi.getApiKey()) {
-      toast.error('Please set your Gemini API key in settings first');
-      return;
-    }
-    
     try {
       setIsLoading(true);
       const result = await geminiApi.summarize({ text: inputText });
@@ -39,7 +33,7 @@ const Summarizer = ({ onSummaryGenerated }: SummarizerProps) => {
       toast.success('Text summarized successfully!');
     } catch (error) {
       console.error('Summarization error:', error);
-      toast.error('Failed to summarize text. Please check your API key and try again.');
+      toast.error('Failed to summarize text. Please check the API key configuration and try again.');
     } finally {
       setIsLoading(false);
     }

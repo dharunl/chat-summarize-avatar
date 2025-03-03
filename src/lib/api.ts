@@ -17,8 +17,11 @@ interface ChatMessageParams {
   history?: Array<{role: string, content: string}>;
 }
 
+// Replace this value with your actual Gemini API key
+const DEFAULT_API_KEY = "YOUR_GEMINI_API_KEY_HERE";
+
 class GeminiApiClient {
-  private apiKey: string | null = null;
+  private apiKey: string | null = DEFAULT_API_KEY;
   private baseUrl = 'https://generativelanguage.googleapis.com/v1beta';
   
   constructor(options?: ApiOptions) {
@@ -37,6 +40,9 @@ class GeminiApiClient {
       const storedKey = localStorage.getItem('gemini_api_key');
       if (storedKey) {
         this.apiKey = storedKey;
+      } else {
+        // Fall back to default key if no key is set
+        this.apiKey = DEFAULT_API_KEY;
       }
     }
     return this.apiKey;

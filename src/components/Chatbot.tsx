@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import Button from './shared/Button';
 import geminiApi from '@/lib/api';
@@ -31,11 +30,6 @@ const Chatbot = ({ onMessageReceived }: ChatbotProps) => {
   
   const sendMessage = async () => {
     if (!inputMessage.trim()) return;
-    
-    if (!geminiApi.getApiKey()) {
-      toast.error('Please set your Gemini API key in settings first');
-      return;
-    }
     
     const userMessage: ChatMessage = {
       role: 'user',
@@ -71,7 +65,7 @@ const Chatbot = ({ onMessageReceived }: ChatbotProps) => {
       }
     } catch (error) {
       console.error('Chat error:', error);
-      toast.error('Failed to get a response. Please check your API key and try again.');
+      toast.error('Failed to get a response. Please check the API key configuration and try again.');
     } finally {
       setIsLoading(false);
       
